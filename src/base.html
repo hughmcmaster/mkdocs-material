@@ -354,20 +354,20 @@
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
           {% set path = "assets/javascripts/lunr/" %}
-          <script src="{{ (path ~ 'lunr.stemmer.support.js') | url }}"></script>
+          <script src="{{ (path ~ 'lunr.stemmer.support.min.js') | url }}"></script>
           {% for language in languages | map("trim") %}
             {% if language != "en" %}
               {% if language == "ja" %}
-                <script src="{{ (path ~ 'tinyseg.js') | url }}"></script>
+                <script src="{{ (path ~ 'tinyseg.min.js') | url }}"></script>
               {% endif %}
               {% if language in ($md-lunr-languages$) %}
-                <script src="{{ (path ~ 'lunr.' ~ language ~ '.js') | url }}">
+                <script src="{{ (path ~ 'lunr.' ~ language ~ '.min.js') | url }}">
                 </script>
               {% endif %}
             {% endif %}
           {% endfor %}
           {% if languages | length > 1 %}
-            <script src="{{ (path ~ 'lunr.multi.js') | url }}"></script>
+            <script src="{{ (path ~ 'lunr.multi.min.js') | url }}"></script>
           {% endif %}
         {% endif %}
       {% endif %}
